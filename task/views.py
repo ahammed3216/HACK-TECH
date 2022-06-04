@@ -41,7 +41,7 @@ def signup(request):
         return redirect('/')
 
 
-    return render (request,"sign_up.html",{'form':form})
+    return render (request,"signup.html",{'form':form})
 
 
 def complaint(request):
@@ -53,13 +53,20 @@ def complaint(request):
         institution=form.cleaned_data.get('institution')
         roll_number=form.cleaned_data.get('roll_number')
         description=form.cleaned_data.get('description')
+        email=form.cleaned_data.get('email')
         complaint=Complaint(
             user=request.user,
             title=title,
             institution=institution,
             description=description,
             roll_number=roll_number,
+            email=email
         
         )
         complaint.save()
-    return render(request,"complaint.html",{'form':form})
+        return redirect('/')
+    return render(request,"complaint_n.html",{'form':form})
+
+
+def job(request):
+    return render(request,"job.html")

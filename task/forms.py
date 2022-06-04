@@ -26,6 +26,7 @@ class SignUpForm(forms.Form):
 
 class ComplaintForm(forms.Form):
     title=forms.CharField()
+    email=forms.EmailField()
     institution=forms.CharField()
     roll_number=forms.CharField()
     description=forms.CharField(widget=forms.Textarea())

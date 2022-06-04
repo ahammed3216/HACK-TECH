@@ -1,5 +1,5 @@
 
-from django.conf import settings
+from django.conf import Settings, settings
 from django.db import models
 
 # Create your models here.
@@ -30,4 +30,14 @@ class Oppurtunities(models.Model):
     email=models.EmailField()
     contact_number=models.CharField(max_length=10)
     description=models.TextField()
+
+
+class ApplyOppurtunity(models.Model):
+    user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    name=models.CharField(max_length=15)
+    email=models.EmailField()
+    contact_number=models.CharField(max_length=10)
+    institution=models.CharField(max_length=20,null=True,blank=True)
+    description=models.TextField()
+
 

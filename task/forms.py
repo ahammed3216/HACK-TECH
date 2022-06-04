@@ -37,4 +37,12 @@ class ComplaintForm(forms.Form):
         cleaned_data=self.cleaned_data
         print(cleaned_data)
         return cleaned_data
+
+class JobForm(forms.Form):
+    name=forms.CharField()
+    institution=forms.CharField
+    email=forms.EmailField()
+    description=forms.Textarea()
+    contact_number=forms.CharField()
+
         

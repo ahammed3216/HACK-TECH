@@ -29,29 +29,49 @@
                 </div>
                 <div class="card-body">
                     <form method="POST">
+                        {% csrf_token %}
                         <div class="form-row">
                             <div class="name">Full name</div>
                             <div class="value">
-                                <input class="input--style-6" type="text" name="full_name">
+                                <input class="input--style-6" type="text" name="name" id="name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Institution</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="text" name="institution" id="institution" >
+                                </div>
+                            
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="name">Email address</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <input class="input--style-6" type="email" name="email" placeholder="example@email.com">
+                                    <input class="input--style-6" type="email" name="email" id="email" placeholder="example@email.com">
                                 </div>
+                            
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="name">Message</div>
+                            <div class="name">Phone Number</div>
                             <div class="value">
                                 <div class="input-group">
-                                    <textarea class="textarea--style-6" name="message" placeholder="Message sent to the employer"></textarea>
+                                    <input class="input--style-6" type="text" name="contact_number" id="contact_number" >
                                 </div>
+                            
                             </div>
                         </div>
                         <div class="form-row">
+                            <div class="name">Why you apply for this post</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6" id="description" name ="description" placeholder="say About You"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="form-row">
                             <div class="name">Upload CV</div>
                             <div class="value">
                                 <div class="input-group js-input-file">
@@ -60,13 +80,14 @@
                                     <span class="input-file__info">No file chosen</span>
                                 </div>
                                 <div class="label--desc">Upload your CV/Resume or any other relevant file. Max file size 50 MB</div>
-                            </div>
+                            </div> -->
                         </div>
-                    </form>
+                    
                 </div>
                 <div class="card-footer">
                     <button class="btn btn--radius-2 btn--blue-2" type="submit">Send Application</button>
                 </div>
+            </form>
             </div>
         </div>
     </div>

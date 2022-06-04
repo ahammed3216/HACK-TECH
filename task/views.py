@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
-from .forms import LoginForm,SignUpForm,ComplaintForm
+from .forms import LoginForm,SignUpForm,ComplaintForm,JobForm
 from django.contrib.auth import get_user_model,authenticate,login
-from .models import Complaint
+from .models import Complaint,ApplyOppurtunity
 
 
 # Create your views here.
@@ -69,4 +69,28 @@ def complaint(request):
 
 
 def job(request):
+    form=JobForm(request.POST or None)
+    if form.is_valid():
+        job_model=ApplyOppurtunity()
+        print(form.cleaned_data)
+        name=form.cleaned_data.get('name')
+        institution=form.cleaned_data.get('institution')
+        email=form.cleaned_data.get('email')
+        description=form.cleaned_data.get('description')
+        contact_number=form.cleaned_data.get('contact_number')
+
+        job_model=ApplyOppurtunity(
+            user=request.user,
+            name=name,
+            institution=institution,
+            email=email,
+            description=description,
+            contact_number=contact_number
+        )
+
+        job_model.save()
+
+        return redirect('/')
+
+
     return render(request,"job.html")

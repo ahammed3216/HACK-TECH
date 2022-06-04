@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
-from .forms import LoginForm,SignUpForm
+from .forms import LoginForm,SignUpForm,ComplaintForm
 from django.contrib.auth import get_user_model,authenticate,login
+from .models import Complaint
 
 
 # Create your views here.
@@ -41,3 +42,24 @@ def signup(request):
 
 
     return render (request,"sign_up.html",{'form':form})
+
+
+def complaint(request):
+    form=ComplaintForm(request.POST or None)
+    if form.is_valid():
+        complaint=Complaint()
+        print(form.cleaned_data)
+        title=form.cleaned_data.get('title')
+        institution=form.cleaned_data.get('institution')
+        roll_number=form.cleaned_data.get('roll_number')
+        description=form.cleaned_data.get('description')
+        complaint=Complaint(
+            user=request.user,
+            title=title,
+            institution=institution,
+            description=description,
+            roll_number=roll_number,
+        
+        )
+        complaint.save()
+    return render(request,"complaint.html",{'form':form})

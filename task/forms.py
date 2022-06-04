@@ -22,4 +22,18 @@ class SignUpForm(forms.Form):
             raise forms.ValidationError("Password must be same")
         
         return cleaned_data
+
+
+class ComplaintForm(forms.Form):
+    title=forms.CharField()
+    institution=forms.CharField()
+    roll_number=forms.CharField()
+    description=forms.CharField(widget=forms.Textarea())
+    
+
+    def clean(self):
+        print("hello")
+        cleaned_data=self.cleaned_data
+        print(cleaned_data)
+        return cleaned_data
         
